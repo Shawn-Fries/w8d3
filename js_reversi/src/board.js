@@ -10,7 +10,17 @@ if (typeof window === 'undefined'){
  */
 function _makeGrid () {
   let grid = new Array(8);
-  for 0 = //iterate each ele, new Array
+
+  for (let i = 0; i < 8; i++) {
+    let columns = new Array(8);
+    grid[i] = columns;
+  }
+
+  grid[3][4] = new Piece('black');
+  grid[4][3] = new Piece('black');
+  grid[3][3] = new Piece('white');
+  grid[4][4] = new Piece('white');
+  return grid;
 }
 
 /**
