@@ -119,7 +119,7 @@ Board.prototype.nextPosition = function(pos, dir) {
  */
 Board.prototype.validMove = function (pos, color) {
   if (!this.isOccupied(pos)) {
-    debugger
+    //debugger
     for (let i=0; i < Board.DIRS.length; i++) {
       if (this._positionsToFlip(pos,color,Board.DIRS[i]).length > 0) {
         return true;
@@ -136,6 +136,17 @@ Board.prototype.validMove = function (pos, color) {
  * Throws an error if the position represents an invalid move.
  */
 Board.prototype.placePiece = function (pos, color) {
+  if (this.validMove(pos, color)) {
+    this.grid[pos[0]][pos[1]] = new Piece(color);
+    for (let i = 0; i < Board.DIRS.length; i++) {
+      a = this._positionsToFlip(pos, color, Board.DIRS[i]);
+     // for () {
+
+    //  }
+    }
+  } else {
+    throw new Error('Not valid pos!');
+  }
 };
 
 /**
