@@ -40,6 +40,7 @@ Board.DIRS = [
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
+  return pos[0] >= 0 && pos[1] >= 0 && pos[0] < 8 && pos[1] < 8;
 };
 
 /**
@@ -47,6 +48,10 @@ Board.prototype.isValidPos = function (pos) {
  * throwing an Error if the position is invalid.
  */
 Board.prototype.getPiece = function (pos) {
+  if (!this.isValidPos(pos)) {
+    throw new Error('Not valid pos!');
+  }
+  return this.grid[pos[0]][pos[1]];
 };
 
 /**
@@ -54,6 +59,11 @@ Board.prototype.getPiece = function (pos) {
  * matches a given color.
  */
 Board.prototype.isMine = function (pos, color) {
+  let piece = this.getPiece(pos);
+  if (piece === undefined){
+    return piece;
+  }
+  return this.getPiece(pos).color === color;
 };
 
 /**
